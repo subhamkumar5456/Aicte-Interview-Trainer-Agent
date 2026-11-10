@@ -1,0 +1,83 @@
+{
+  "name": "interview-trainer",
+  "version": "1.0.0",
+  "description": "Interview Trainer Agent — RAG-powered job interview prep using IBM Granite on watsonx.ai",
+  "author": "IBM Skills Build / AICTE-2026",
+  "problem_statement": "Problem Statement No.22 — Interview Trainer Agent",
+
+  "entrypoint": "app.py",
+  "framework": "streamlit",
+  "python_version": ">=3.11",
+
+  "ibm_services": {
+    "watsonx_ai": {
+      "required": true,
+      "model_id": "ibm/granite-3-3-8b-instruct",
+      "optional_guardian_model_id": "ibm/granite-guardian-3-8b",
+      "default_url": "https://us-south.ml.cloud.ibm.com",
+      "tier": "IBM Cloud Lite (free)"
+    }
+  },
+
+  "environment_variables": {
+    "required": {
+      "WATSONX_API_KEY": "IBM Cloud API key for watsonx.ai authentication",
+      "WATSONX_PROJECT_ID": "watsonx.ai project ID"
+    },
+    "optional": {
+      "WATSONX_URL": {
+        "default": "https://us-south.ml.cloud.ibm.com",
+        "description": "Regional watsonx.ai endpoint (us-south | eu-de | jp-tok)"
+      },
+      "WATSONX_MODEL_ID": {
+        "default": "ibm/granite-3-3-8b-instruct",
+        "description": "IBM Granite model ID"
+      },
+      "GUARDIAN_MODEL_ID": {
+        "default": "",
+        "description": "Optional Granite Guardian model ID for enhanced safety checks"
+      }
+    }
+  },
+
+  "dependencies": {
+    "runtime": [
+      "streamlit>=1.45.0",
+      "python-dotenv>=1.0.0",
+      "pydantic>=2.10.0",
+      "ibm-watsonx-ai>=1.5.0",
+      "chromadb>=1.0.0",
+      "sentence-transformers>=3.0.0",
+      "pypdf>=5.0.0",
+      "tenacity>=8.0.0",
+      "langdetect>=1.0.9"
+    ],
+    "dev": [
+      "pytest>=8.0.0",
+      "pytest-mock>=3.14.0"
+    ]
+  },
+
+  "run": {
+    "command": "streamlit run app.py",
+    "port": 8501,
+    "test_command": "pytest tests/ -v"
+  },
+
+  "features": [
+    "Resume-aware interview question generation (RAG + IBM Granite)",
+    "Batch answer scoring with structured feedback (0–10 per question)",
+    "10-category guardrail system (injection, PII, content safety, bias, rate limiting, etc.)",
+    "ChromaDB vector store with sentence-transformers (all-MiniLM-L6-v2)",
+    "Session-only privacy — no data persisted to disk",
+    "PDF and plain-text resume upload support",
+    "Roles: Full-Stack Developer, AI/ML Engineer, Cybersecurity Analyst",
+    "Interview types: technical, behavioral, mixed"
+  ],
+
+  "llm_call_budget": {
+    "calls_per_session": 2,
+    "call_1": "generate_questions — all N questions in one shot (temperature 0.5)",
+    "call_2": "score_all_answers — full batch scoring (temperature 0.2)"
+  }
+}

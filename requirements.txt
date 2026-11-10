@@ -1,0 +1,22 @@
+# Core
+streamlit>=1.45.0
+python-dotenv>=1.0.0
+pydantic>=2.10.0
+
+# IBM watsonx.ai
+ibm-watsonx-ai>=1.5.0
+
+# RAG
+chromadb>=1.0.0
+sentence-transformers>=3.0.0
+
+# PDF extraction
+pypdf>=5.0.0
+
+# Testing
+pytest>=8.0.0
+pytest-mock>=3.14.0
+
+# Utilities
+tenacity>=8.0.0
+langdetect>=1.0.9

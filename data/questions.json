@@ -1,0 +1,702 @@
+[
+  {
+    "id": "fsd-001",
+    "role": "Full-Stack Developer",
+    "type": "technical",
+    "difficulty": "medium",
+    "question": "Describe the request lifecycle in a typical React + Node.js application, from a user clicking a button to data being returned from the database.",
+    "key_points": [
+      "Event handler triggers in React component",
+      "HTTP request made via fetch/axios to REST or GraphQL endpoint",
+      "Node.js (Express/Fastify) routes the request to a controller",
+      "Controller validates input and calls a service/data-access layer",
+      "ORM or query builder sends SQL/NoSQL query to the database",
+      "Response is serialized and sent back through the layers",
+      "React state updated, UI re-renders"
+    ]
+  },
+  {
+    "id": "fsd-002",
+    "role": "Full-Stack Developer",
+    "type": "technical",
+    "difficulty": "hard",
+    "question": "How would you design a real-time collaborative feature (like simultaneous document editing) in a web application? Walk through your architecture choices.",
+    "key_points": [
+      "WebSockets or Server-Sent Events for bi-directional communication",
+      "Operational Transformation or CRDT for conflict resolution",
+      "Presence indicator using heartbeat/pub-sub",
+      "Backend message broker (e.g. Redis pub/sub) to fan out updates",
+      "Optimistic UI updates with rollback on conflict",
+      "Handling reconnections and missed updates gracefully",
+      "Scalability considerations (sticky sessions or shared state)"
+    ]
+  },
+  {
+    "id": "fsd-003",
+    "role": "Full-Stack Developer",
+    "type": "technical",
+    "difficulty": "easy",
+    "question": "What is the difference between server-side rendering (SSR), client-side rendering (CSR), and static site generation (SSG)? When would you choose each?",
+    "key_points": [
+      "CSR: full HTML built in browser, initial load slower, SEO challenges",
+      "SSR: HTML generated on server per request, better SEO, higher server load",
+      "SSG: HTML pre-built at build time, fastest delivery, not suitable for dynamic data",
+      "ISR (incremental static regeneration) as a hybrid",
+      "SEO and time-to-first-byte as key deciding factors",
+      "Next.js/Nuxt as examples of frameworks supporting all modes"
+    ]
+  },
+  {
+    "id": "fsd-004",
+    "role": "Full-Stack Developer",
+    "type": "technical",
+    "difficulty": "medium",
+    "question": "Explain how you would implement JWT-based authentication, including token storage, refresh strategy, and how to handle token revocation.",
+    "key_points": [
+      "Access token (short-lived) and refresh token (long-lived) pattern",
+      "Store access token in memory; refresh token in httpOnly cookie",
+      "Never store tokens in localStorage due to XSS risk",
+      "Refresh endpoint issues new access token silently",
+      "Token revocation via a deny-list/blocklist in Redis or DB",
+      "CSRF protection on refresh endpoint",
+      "Proper JWT claims (iss, sub, exp, iat)"
+    ]
+  },
+  {
+    "id": "fsd-005",
+    "role": "Full-Stack Developer",
+    "type": "technical",
+    "difficulty": "hard",
+    "question": "You notice that a database query in a high-traffic endpoint is taking 2+ seconds. Walk through your end-to-end debugging and optimization process.",
+    "key_points": [
+      "Use EXPLAIN/EXPLAIN ANALYZE to examine query plan",
+      "Identify missing or unused indexes",
+      "Check for N+1 query problems in ORM usage",
+      "Consider query rewriting (avoid SELECT *, use pagination)",
+      "Database-level caching (query cache, materialized views)",
+      "Application-level caching with Redis",
+      "Connection pooling configuration",
+      "Consider read replicas for heavy read workloads"
+    ]
+  },
+  {
+    "id": "fsd-006",
+    "role": "Full-Stack Developer",
+    "type": "behavioral",
+    "difficulty": "medium",
+    "question": "Tell me about a time you had a significant technical disagreement with a teammate about an architectural decision. How did you resolve it?",
+    "key_points": [
+      "Describes a specific real situation",
+      "Listened to and understood the other perspective",
+      "Used data, prototypes, or spikes to support arguments",
+      "Focused on project goals rather than personal preferences",
+      "Reached a consensus or involved a third party appropriately",
+      "Reflected on what was learned"
+    ]
+  },
+  {
+    "id": "fsd-007",
+    "role": "Full-Stack Developer",
+    "type": "behavioral",
+    "difficulty": "easy",
+    "question": "Describe how you stay current with evolving front-end and back-end technologies given how quickly the ecosystem changes.",
+    "key_points": [
+      "Regular reading of release notes, blogs, official docs",
+      "Participation in communities (GitHub, Discord, meetups)",
+      "Side projects to experiment with new tools",
+      "Selective adoption — evaluating stability before production use",
+      "Knowledge sharing with team (tech talks, PRs)"
+    ]
+  },
+  {
+    "id": "fsd-008",
+    "role": "Full-Stack Developer",
+    "type": "behavioral",
+    "difficulty": "medium",
+    "question": "Walk me through how you approach code reviews — both as a reviewer and as the author receiving feedback.",
+    "key_points": [
+      "As author: small PRs, clear description, self-review first",
+      "As reviewer: checks for correctness, security, readability, test coverage",
+      "Constructive tone, asking questions rather than making demands",
+      "Separating nits from blockers",
+      "Responsiveness and iteration speed",
+      "Using CI checks to reduce manual review burden"
+    ]
+  },
+  {
+    "id": "fsd-009",
+    "role": "Full-Stack Developer",
+    "type": "technical",
+    "difficulty": "medium",
+    "question": "How would you approach migrating a monolithic application to microservices while keeping the service running for existing users?",
+    "key_points": [
+      "Strangler fig pattern to incrementally extract services",
+      "Define clear service boundaries around business capabilities",
+      "API gateway as a single entry point",
+      "Dual-write or event-sourcing for data migration",
+      "Feature flags to route traffic gradually",
+      "Monitoring and rollback strategy",
+      "Contract testing between services"
+    ]
+  },
+  {
+    "id": "fsd-010",
+    "role": "Full-Stack Developer",
+    "type": "technical",
+    "difficulty": "easy",
+    "question": "Explain the CSS box model and how the 'box-sizing' property changes how width and height are calculated.",
+    "key_points": [
+      "Box model: content, padding, border, margin",
+      "Default box-sizing is content-box: width = content only",
+      "border-box: width includes padding and border",
+      "Practical implication for layout calculations",
+      "Universal border-box reset as a common practice"
+    ]
+  },
+  {
+    "id": "fsd-011",
+    "role": "Full-Stack Developer",
+    "type": "behavioral",
+    "difficulty": "hard",
+    "question": "Describe the most challenging production incident you dealt with. What was your role, and what did you do to diagnose and fix it?",
+    "key_points": [
+      "Clear description of the incident and its impact",
+      "Systematic diagnosis (logs, metrics, traces)",
+      "Communication with stakeholders during the incident",
+      "Quick mitigation vs. long-term fix distinction",
+      "Post-mortem and preventive measures",
+      "Personal ownership and calm under pressure"
+    ]
+  },
+  {
+    "id": "fsd-012",
+    "role": "Full-Stack Developer",
+    "type": "technical",
+    "difficulty": "medium",
+    "question": "What are the key differences between REST and GraphQL, and what factors would guide your choice between them for a new project?",
+    "key_points": [
+      "REST: resource-based, multiple endpoints, over/under-fetching",
+      "GraphQL: single endpoint, client specifies shape, schema-first",
+      "N+1 problem in GraphQL and DataLoader pattern",
+      "Caching differences (HTTP cache vs. persisted queries)",
+      "Team familiarity and tooling ecosystem",
+      "Use case: mobile clients benefit more from GraphQL"
+    ]
+  },
+  {
+    "id": "fsd-013",
+    "role": "Full-Stack Developer",
+    "type": "technical",
+    "difficulty": "hard",
+    "question": "How do you design a frontend application to be accessible (WCAG AA compliant)? Give specific technical examples.",
+    "key_points": [
+      "Semantic HTML elements (nav, main, article, button vs div)",
+      "ARIA roles, labels, live regions where semantic HTML is insufficient",
+      "Keyboard navigation and focus management",
+      "Color contrast ratios (4.5:1 for normal text)",
+      "Alt text for images, captions for media",
+      "Testing with screen readers and automated tools (axe, Lighthouse)",
+      "Avoiding motion for users with vestibular disorders (prefers-reduced-motion)"
+    ]
+  },
+  {
+    "id": "fsd-014",
+    "role": "Full-Stack Developer",
+    "type": "behavioral",
+    "difficulty": "easy",
+    "question": "How do you prioritize tasks when you have multiple deadlines and competing requests from different stakeholders?",
+    "key_points": [
+      "Clarifies actual urgency vs. perceived urgency",
+      "Uses a framework (impact vs. effort, MoSCoW)",
+      "Communicates proactively about trade-offs",
+      "Involves stakeholders in prioritization decisions",
+      "Protects focus time for complex work"
+    ]
+  },
+  {
+    "id": "fsd-015",
+    "role": "Full-Stack Developer",
+    "type": "technical",
+    "difficulty": "medium",
+    "question": "Explain how you would implement and test an idempotent API endpoint for a payment processing use case.",
+    "key_points": [
+      "Idempotency key sent by client (UUID) in header",
+      "Server stores key + response in cache/DB with TTL",
+      "On duplicate request: return cached response without reprocessing",
+      "Atomic check-and-set to prevent race conditions",
+      "Testing: duplicate requests, concurrent requests, expired keys",
+      "Distinction between idempotency and safety (GET is safe and idempotent; POST is neither by default)"
+    ]
+  },
+
+  {
+    "id": "ml-001",
+    "role": "AI/ML Engineer",
+    "type": "technical",
+    "difficulty": "medium",
+    "question": "Explain the bias-variance trade-off and describe a practical scenario where you had to balance it.",
+    "key_points": [
+      "Bias: error from wrong assumptions — underfitting",
+      "Variance: error from sensitivity to training data — overfitting",
+      "Trade-off: reducing one increases the other",
+      "Practical tools: cross-validation, regularization, ensemble methods",
+      "Concrete example involving real model and dataset characteristics",
+      "Validation curves / learning curves as diagnostic tools"
+    ]
+  },
+  {
+    "id": "ml-002",
+    "role": "AI/ML Engineer",
+    "type": "technical",
+    "difficulty": "hard",
+    "question": "Walk me through how attention mechanisms work in transformer models and why they replaced recurrent architectures for most NLP tasks.",
+    "key_points": [
+      "Self-attention computes query, key, value from the same sequence",
+      "Scaled dot-product attention formula",
+      "Multi-head attention allows attending to different representation subspaces",
+      "Parallelization advantage over sequential RNN processing",
+      "Positional encoding to inject sequence order",
+      "O(n²) attention complexity vs. O(n) RNN — trade-offs for long sequences",
+      "Applications: BERT, GPT, T5 architecture differences"
+    ]
+  },
+  {
+    "id": "ml-003",
+    "role": "AI/ML Engineer",
+    "type": "technical",
+    "difficulty": "medium",
+    "question": "How would you approach a highly imbalanced classification problem (e.g. 1% positive class) end-to-end?",
+    "key_points": [
+      "Diagnostic: confusion matrix, precision-recall over ROC-AUC",
+      "Resampling: SMOTE, random oversampling, undersampling",
+      "Algorithm-level: class_weight parameter, focal loss",
+      "Threshold tuning on validation set",
+      "Ensemble methods (balanced random forest)",
+      "Domain knowledge on cost of false positives vs. false negatives",
+      "Stratified k-fold cross-validation"
+    ]
+  },
+  {
+    "id": "ml-004",
+    "role": "AI/ML Engineer",
+    "type": "technical",
+    "difficulty": "hard",
+    "question": "Describe in detail how you would fine-tune a large language model for a domain-specific task with limited labeled data.",
+    "key_points": [
+      "Data collection and quality: annotation guidelines, inter-annotator agreement",
+      "Parameter-efficient fine-tuning: LoRA, QLoRA, prefix tuning",
+      "Few-shot and zero-shot baselines before fine-tuning",
+      "Catastrophic forgetting mitigation (regularization, replay)",
+      "Evaluation: task-specific metrics, human evaluation",
+      "Hyperparameter search with small grid due to compute cost",
+      "Model versioning and experiment tracking (MLflow, W&B)"
+    ]
+  },
+  {
+    "id": "ml-005",
+    "role": "AI/ML Engineer",
+    "type": "technical",
+    "difficulty": "medium",
+    "question": "How do you monitor a machine learning model in production, and what signals would prompt you to retrain it?",
+    "key_points": [
+      "Data drift detection (statistical tests: KS test, PSI)",
+      "Model performance degradation via ground truth labels with delay",
+      "Prediction distribution shift monitoring",
+      "Business metric correlation tracking",
+      "Retrain triggers: drift threshold, scheduled, performance SLA breach",
+      "A/B testing new model before full rollout",
+      "Shadow mode deployment for safe evaluation"
+    ]
+  },
+  {
+    "id": "ml-006",
+    "role": "AI/ML Engineer",
+    "type": "technical",
+    "difficulty": "easy",
+    "question": "What is gradient descent, and how do variants like SGD, Adam, and AdaGrad differ in practice?",
+    "key_points": [
+      "Gradient descent: update parameters opposite to gradient of loss",
+      "Batch vs. mini-batch vs. stochastic trade-offs",
+      "SGD with momentum: accumulates velocity to dampen oscillation",
+      "AdaGrad: adaptive learning rates — good for sparse gradients",
+      "Adam: combines momentum and adaptive rates — most common default",
+      "Learning rate sensitivity and scheduling",
+      "Saddle points and local minima in deep networks"
+    ]
+  },
+  {
+    "id": "ml-007",
+    "role": "AI/ML Engineer",
+    "type": "behavioral",
+    "difficulty": "medium",
+    "question": "Describe a time when a model you built performed well offline but poorly in production. What caused the gap and how did you fix it?",
+    "key_points": [
+      "Identifies a specific train-serve skew or distribution shift",
+      "Root cause analysis process described",
+      "Data pipeline audit and feature consistency checks",
+      "Actions taken to align offline and online environments",
+      "Monitoring added to catch this earlier in the future",
+      "Reflection on what the experience taught them"
+    ]
+  },
+  {
+    "id": "ml-008",
+    "role": "AI/ML Engineer",
+    "type": "behavioral",
+    "difficulty": "easy",
+    "question": "How do you communicate complex ML results and model limitations to non-technical stakeholders?",
+    "key_points": [
+      "Uses business-relevant language and metrics instead of technical jargon",
+      "Visual aids: charts, confusion matrix interpretation",
+      "Explains confidence intervals and uncertainty",
+      "Sets realistic expectations about model capabilities",
+      "Provides concrete examples of where the model works and fails",
+      "Invites questions and checks for understanding"
+    ]
+  },
+  {
+    "id": "ml-009",
+    "role": "AI/ML Engineer",
+    "type": "technical",
+    "difficulty": "hard",
+    "question": "Explain retrieval-augmented generation (RAG): its components, common failure modes, and how you would evaluate a RAG pipeline.",
+    "key_points": [
+      "Components: retriever (dense/sparse), vector store, LLM reader",
+      "Chunking strategy impact on retrieval quality",
+      "Dense retrieval: bi-encoder vs. cross-encoder reranking",
+      "Failure modes: retrieval misses, context overflow, hallucination despite retrieval",
+      "Evaluation: retrieval recall/precision, answer faithfulness, RAGAS framework",
+      "Hybrid retrieval (BM25 + dense) for robustness",
+      "Handling conflicting information in retrieved passages"
+    ]
+  },
+  {
+    "id": "ml-010",
+    "role": "AI/ML Engineer",
+    "type": "technical",
+    "difficulty": "medium",
+    "question": "What are the main techniques for reducing inference latency of a large model in production?",
+    "key_points": [
+      "Quantization (INT8, INT4, GPTQ) with accuracy trade-offs",
+      "Model distillation: train smaller student from larger teacher",
+      "Pruning: structured vs. unstructured",
+      "Speculative decoding for autoregressive generation",
+      "Batching strategies and continuous batching in LLM serving",
+      "Hardware selection: GPU vs. specialized accelerators",
+      "KV cache management"
+    ]
+  },
+  {
+    "id": "ml-011",
+    "role": "AI/ML Engineer",
+    "type": "behavioral",
+    "difficulty": "hard",
+    "question": "Tell me about a project where you had to make a significant trade-off between model accuracy and fairness. How did you approach it?",
+    "key_points": [
+      "Identifies a real fairness-accuracy tension",
+      "Explains which fairness definition was chosen and why",
+      "Stakeholder involvement in defining acceptable trade-offs",
+      "Technical approaches used (re-weighting, adversarial debiasing, post-processing)",
+      "Ongoing monitoring for fairness metrics in production",
+      "Transparency in communicating limitations to users"
+    ]
+  },
+  {
+    "id": "ml-012",
+    "role": "AI/ML Engineer",
+    "type": "technical",
+    "difficulty": "easy",
+    "question": "Describe the difference between precision, recall, F1 score, and AUC-ROC, and when each metric is most informative.",
+    "key_points": [
+      "Precision: of predicted positives, how many are correct",
+      "Recall (sensitivity): of actual positives, how many are found",
+      "F1: harmonic mean balancing precision and recall",
+      "AUC-ROC: discrimination ability across all thresholds",
+      "When to prefer precision (spam filter), recall (cancer screening)",
+      "Precision-recall curve more informative for imbalanced classes"
+    ]
+  },
+  {
+    "id": "ml-013",
+    "role": "AI/ML Engineer",
+    "type": "technical",
+    "difficulty": "hard",
+    "question": "How would you design a feature store for an organization running 20+ ML models in production?",
+    "key_points": [
+      "Offline vs. online store separation (batch vs. low-latency serving)",
+      "Feature reuse and discovery across teams",
+      "Point-in-time correctness to prevent label leakage",
+      "Backfill capability for historical features",
+      "Monitoring feature freshness and schema drift",
+      "Technology choices: Feast, Tecton, Hopsworks",
+      "Governance: ownership, documentation, versioning"
+    ]
+  },
+  {
+    "id": "ml-014",
+    "role": "AI/ML Engineer",
+    "type": "behavioral",
+    "difficulty": "medium",
+    "question": "How do you decide when to use a simple model like logistic regression versus a complex deep learning model for a new problem?",
+    "key_points": [
+      "Data size: deep models need more data to outperform simpler models",
+      "Interpretability requirements in the domain",
+      "Latency and compute budget",
+      "Baseline-first mindset: always start simple",
+      "Feature engineering potential vs. representation learning need",
+      "Maintenance and debugging complexity trade-offs"
+    ]
+  },
+  {
+    "id": "ml-015",
+    "role": "AI/ML Engineer",
+    "type": "technical",
+    "difficulty": "medium",
+    "question": "What is prompt engineering, and what techniques (chain-of-thought, few-shot, self-consistency) have you applied to improve LLM outputs?",
+    "key_points": [
+      "Prompt engineering: designing inputs to elicit desired LLM behavior",
+      "Zero-shot vs. few-shot prompting",
+      "Chain-of-thought: include reasoning steps to improve multi-step tasks",
+      "Self-consistency: sample multiple outputs and take majority vote",
+      "Role assignment and output format constraints",
+      "Iterative refinement and prompt versioning",
+      "Limitations: prompt sensitivity, token cost"
+    ]
+  },
+
+  {
+    "id": "cs-001",
+    "role": "Cybersecurity Analyst",
+    "type": "technical",
+    "difficulty": "medium",
+    "question": "Describe the steps you would take when you receive an alert that a workstation on your network may be infected with malware.",
+    "key_points": [
+      "Containment first: isolate the host from the network",
+      "Preserve evidence: memory dump and disk image before remediation",
+      "Identify indicators of compromise (IoCs): file hashes, registry keys, network connections",
+      "Check SIEM/EDR for lateral movement or data exfiltration attempts",
+      "Root cause analysis: initial infection vector (phishing, exploit, USB)",
+      "Clean or reimage the endpoint",
+      "Document and report according to incident response plan",
+      "Post-incident: update detection rules with new IoCs"
+    ]
+  },
+  {
+    "id": "cs-002",
+    "role": "Cybersecurity Analyst",
+    "type": "technical",
+    "difficulty": "hard",
+    "question": "Explain how you would detect and investigate a potential insider threat without violating employee privacy rights or applicable law.",
+    "key_points": [
+      "Baseline normal behavior using UEBA tools",
+      "Trigger-based investigation rather than blanket surveillance",
+      "DLP monitoring focused on sensitive data classification",
+      "Proper legal authorization and HR/legal involvement before monitoring individuals",
+      "Chain of custody for any collected evidence",
+      "Distinguishing accidental policy violation from malicious intent",
+      "Privacy-preserving techniques: anonymization at aggregate level"
+    ]
+  },
+  {
+    "id": "cs-003",
+    "role": "Cybersecurity Analyst",
+    "type": "technical",
+    "difficulty": "easy",
+    "question": "What is the CIA triad, and can you give a real-world example of a control that addresses each element?",
+    "key_points": [
+      "Confidentiality: unauthorized access prevention — example: encryption at rest/in transit",
+      "Integrity: preventing unauthorized modification — example: file integrity monitoring, checksums",
+      "Availability: ensuring access when needed — example: redundancy, DDoS mitigation, backups",
+      "Trade-offs between the three properties in security design",
+      "Mention of related frameworks (ISO 27001, NIST CSF)"
+    ]
+  },
+  {
+    "id": "cs-004",
+    "role": "Cybersecurity Analyst",
+    "type": "technical",
+    "difficulty": "medium",
+    "question": "How does a SQL injection attack work, and what are the defensive measures developers and security teams should implement?",
+    "key_points": [
+      "Attack mechanism: unsanitized input alters query structure",
+      "Parameterized queries / prepared statements as primary defense",
+      "ORM usage as an additional layer",
+      "Input validation and allowlisting where feasible",
+      "WAF rules to detect common SQLi patterns",
+      "Least privilege on database accounts",
+      "Regular SAST/DAST scanning in CI/CD pipeline",
+      "Error message hardening to avoid information leakage"
+    ]
+  },
+  {
+    "id": "cs-005",
+    "role": "Cybersecurity Analyst",
+    "type": "technical",
+    "difficulty": "hard",
+    "question": "Describe how you would design a defense-in-depth architecture for a web application handling sensitive personal data.",
+    "key_points": [
+      "Perimeter: WAF, DDoS mitigation, CDN with TLS termination",
+      "Network segmentation: separate VPCs/subnets for web, app, DB tiers",
+      "Identity: MFA, privileged access management, zero-trust principles",
+      "Application: input validation, CSRF tokens, CSP headers, secure cookies",
+      "Data: encryption at rest (AES-256) and in transit (TLS 1.2+), tokenization",
+      "Monitoring: SIEM, EDR, centralized logging, anomaly detection",
+      "Incident response plan and regular tabletop exercises",
+      "Compliance alignment: GDPR, ISO 27001, SOC 2"
+    ]
+  },
+  {
+    "id": "cs-006",
+    "role": "Cybersecurity Analyst",
+    "type": "behavioral",
+    "difficulty": "medium",
+    "question": "Tell me about a time you discovered a significant vulnerability in production. How did you handle it and communicate it to stakeholders?",
+    "key_points": [
+      "Describes a specific and real-sounding vulnerability",
+      "Immediate containment actions taken",
+      "Risk assessment before communicating",
+      "Structured, calm communication to technical and non-technical stakeholders",
+      "Coordinated remediation plan with clear ownership",
+      "Post-fix verification and disclosure decisions",
+      "Lessons learned and preventive changes made"
+    ]
+  },
+  {
+    "id": "cs-007",
+    "role": "Cybersecurity Analyst",
+    "type": "behavioral",
+    "difficulty": "easy",
+    "question": "How do you keep your threat intelligence current, and how do you apply it to your day-to-day work?",
+    "key_points": [
+      "Sources: MITRE ATT&CK, CVE feeds, CISA advisories, ISAC feeds",
+      "Processes: RSS subscriptions, threat intel platforms (MISP, OpenCTI)",
+      "Translating intelligence to actionable detection rules (SIEM, EDR)",
+      "Sharing intelligence within team and across org",
+      "Prioritizing based on relevance to the organization's threat model"
+    ]
+  },
+  {
+    "id": "cs-008",
+    "role": "Cybersecurity Analyst",
+    "type": "technical",
+    "difficulty": "medium",
+    "question": "What is the difference between vulnerability management and patch management, and how do you prioritize which vulnerabilities to address first?",
+    "key_points": [
+      "Vulnerability management: discover, assess, remediate, verify cycle",
+      "Patch management: operational process of applying vendor fixes",
+      "CVSS score as baseline, EPSS for exploit likelihood",
+      "CISA KEV catalog for actively exploited vulnerabilities",
+      "Asset criticality and exposure (internet-facing vs. internal)",
+      "Compensating controls when patching is not immediately possible",
+      "SLA definitions by severity tier"
+    ]
+  },
+  {
+    "id": "cs-009",
+    "role": "Cybersecurity Analyst",
+    "type": "technical",
+    "difficulty": "hard",
+    "question": "Walk me through how you would conduct a threat model for a new microservices application before it goes to production.",
+    "key_points": [
+      "Methodology: STRIDE or PASTA framework",
+      "Identify assets, data flows and trust boundaries (DFD)",
+      "Enumerate threats per component per STRIDE category",
+      "Risk rating: likelihood × impact matrix",
+      "Mitigation mapping to security controls",
+      "Residual risk sign-off with product and legal",
+      "Iterative update as design changes",
+      "Output: threat model document and security requirements backlog"
+    ]
+  },
+  {
+    "id": "cs-010",
+    "role": "Cybersecurity Analyst",
+    "type": "technical",
+    "difficulty": "easy",
+    "question": "Explain the difference between authentication and authorization, and describe common weaknesses in each.",
+    "key_points": [
+      "Authentication: verifying identity — who are you?",
+      "Authorization: verifying permissions — what can you do?",
+      "AuthN weaknesses: weak passwords, no MFA, credential stuffing, session fixation",
+      "AuthZ weaknesses: IDOR, privilege escalation, missing server-side checks",
+      "OAuth2/OIDC roles in delegated authorization",
+      "Importance of checking authorization on every request server-side"
+    ]
+  },
+  {
+    "id": "cs-011",
+    "role": "Cybersecurity Analyst",
+    "type": "behavioral",
+    "difficulty": "hard",
+    "question": "Describe a situation where you had to balance security requirements with business needs or developer velocity. How did you find common ground?",
+    "key_points": [
+      "Specific business pressure described (deadline, revenue impact)",
+      "Risk-based framing rather than binary allow/deny",
+      "Compensating controls proposed as interim measure",
+      "Stakeholder education on security risk in business language",
+      "Outcome: compromise reached without abandoning core security",
+      "Relationship building rather than adversarial stance"
+    ]
+  },
+  {
+    "id": "cs-012",
+    "role": "Cybersecurity Analyst",
+    "type": "technical",
+    "difficulty": "medium",
+    "question": "How does TLS work at a high level, and what are common TLS misconfiguration issues you have seen or would test for?",
+    "key_points": [
+      "Handshake: client hello, server hello, certificate, key exchange, finished",
+      "Asymmetric encryption for key exchange, symmetric for bulk data",
+      "Certificate validation: chain of trust, expiry, hostname matching",
+      "Misconfigurations: weak cipher suites, SSLv3/TLS 1.0/1.1 enabled, self-signed certs in production",
+      "HSTS not set, certificate pinning absent in mobile apps",
+      "Tools: testssl.sh, nmap ssl-enum-ciphers, SSL Labs scanner"
+    ]
+  },
+  {
+    "id": "cs-013",
+    "role": "Cybersecurity Analyst",
+    "type": "technical",
+    "difficulty": "hard",
+    "question": "Explain the MITRE ATT&CK framework and how you would use it to improve your organization's detection coverage.",
+    "key_points": [
+      "Framework structure: tactics, techniques, sub-techniques, procedures",
+      "Mapping existing detections to ATT&CK to identify coverage gaps",
+      "Purple team exercises using ATT&CK Navigator",
+      "Adversary emulation plans based on relevant threat actor TTPs",
+      "Prioritizing detection engineering based on high-frequency or high-impact techniques",
+      "Continuous improvement loop: detect → test → tune"
+    ]
+  },
+  {
+    "id": "cs-014",
+    "role": "Cybersecurity Analyst",
+    "type": "behavioral",
+    "difficulty": "medium",
+    "question": "How do you handle alert fatigue in a SOC environment while ensuring that real threats are not missed?",
+    "key_points": [
+      "Triage process and severity-based SLA",
+      "Alert tuning: reducing false positive rate for noisy rules",
+      "Automation for high-confidence low-complexity alerts (SOAR)",
+      "Correlation rules to aggregate related low-signal events",
+      "Rotation and workload management to prevent burnout",
+      "Metrics tracking: MTTD, MTTR, false positive rate trends"
+    ]
+  },
+  {
+    "id": "cs-015",
+    "role": "Cybersecurity Analyst",
+    "type": "technical",
+    "difficulty": "medium",
+    "question": "What is zero-trust architecture, and what practical steps would you take to move an organization from perimeter-based security toward zero trust?",
+    "key_points": [
+      "Zero trust principle: never trust, always verify regardless of network location",
+      "Identity as the new perimeter: strong IdP, MFA, continuous auth",
+      "Micro-segmentation to limit lateral movement",
+      "Device health attestation before granting access",
+      "Least privilege access and just-in-time provisioning",
+      "Comprehensive logging and analytics on every access request",
+      "Incremental adoption strategy rather than full rip-and-replace"
+    ]
+  }
+]
